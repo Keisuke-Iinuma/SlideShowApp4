@@ -134,7 +134,6 @@ class OpenViewController: UIViewController {
     
     @IBAction func photoTap(_ sender: Any) {
         self.performSegue(withIdentifier: "toZoomIn", sender: nil)
-        // タイマーを停止
         if self.timer != nil {
             self.timer.invalidate()
         }
@@ -155,41 +154,42 @@ class OpenViewController: UIViewController {
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        //以下のデッドコードは復習用にに残すものとする
         // 他の画面から segue を使って戻ってきた時に呼ばれる
-         // 動作中のタイマーを1つに保つために、 timer が存在しない場合だけ、タイマーを生成して動作させる
-               if self.timer == nil {
-                   // タイマーを設定
-                   self.timer = Timer.scheduledTimer(timeInterval: 2.0,
-                                                     target: self, selector:#selector(updateTimer(_:)), userInfo: nil, repeats: true)
-                   // 再生・停止ボタンタップ時に進むボタン・戻るボタンのタップ非表示
-                   nextButton.isEnabled = false
-                   backButton.isEnabled = false
-                   // ボタンの名前を停止とする
-                   playButton.setTitle("停止", for: .normal)
-                   // 背景色・ボタン内テキストサイズを変更
-                   //self.view.backgroundColor = UIColor.lightGray
-                   //playButton.titleLabel?.font =
-                   //UIFont.systemFont(ofSize: 25)
-                   
-               } else if self.timer != nil {
-                   // タイマーを停止
-                   self.timer.invalidate()
-                   // nil にして再び再生(nil の時にタイマー生成)
-                   self.timer = nil
-                   // 再生・停止ボタンタップ時に進むボタン・戻るボタンのタップ非表示
-                   nextButton.isEnabled = true
-                   backButton.isEnabled = true
-                   // ボタンの名前を再生とする
-                   playButton.setTitle("再生", for: .normal)
-                   // 背景色・ボタン内テキストサイズを戻す
-                   //self.view.backgroundColor = UIColor.white
-                   //playButton.titleLabel?.font =
-                   //UIFont.systemFont(ofSize: 20)
-                   
-               }
+        // 動作中のタイマーを1つに保つために、 timer が存在しない場合だけ、タイマーを生成して動作させる
+        //if self.timer == nil {
+        // タイマーを設定
+        //    self.timer = Timer.scheduledTimer(timeInterval: 2.0,
+        //                                      target: self, selector:#selector(updateTimer(_:)), userInfo: nil, repeats: true)
+        // 再生・停止ボタンタップ時に進むボタン・戻るボタンのタップ非表示
+        //    nextButton.isEnabled = false
+        //    backButton.isEnabled = false
+        //ボタンの名前を停止とする
+        //    playButton.setTitle("停止", for: .normal)
+        // 背景色・ボタン内テキストサイズを変更
+        //self.view.backgroundColor = UIColor.lightGray
+        //playButton.titleLabel?.font =
+        //UIFont.systemFont(ofSize: 25)
         
+        //} else if self.timer != nil {
+        // タイマーを停止
+        //   self.timer.invalidate()
+        // nil にして再び再生(nil の時にタイマー生成)
+        //self.timer = nil
+        // 再生・停止ボタンタップ時に進むボタン・戻るボタンのタップ非表示
+        nextButton.isEnabled = true
+        backButton.isEnabled = true
+        // ボタンの名前を再生とする
+        playButton.setTitle("再生", for: .normal)
+        // 背景色・ボタン内テキストサイズを戻す
+        //self.view.backgroundColor = UIColor.white
+        //playButton.titleLabel?.font =
+        //UIFont.systemFont(ofSize: 20)
         
     }
+    
+    
+    
     
     
     /*
